@@ -1,0 +1,59 @@
+{
+    "typescript.tsdk": "./reactapp/node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "search.exclude": {
+      "**/.yarn/**": true
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "biomejs.biome"
+    },
+    "spellright.language": [
+      "en",
+      "es"
+    ],
+    "spellright.documentTypes": [
+      "json"
+    ],
+    "spellright.ignoreFiles": [
+      "**/.gitignore",
+      "**/.spellignore",
+      "package.json",
+      "biome.json"
+    ],
+    "biome.lspBin": "./reactapp/node_modules/@biomejs/cli-win32-x64/biome.exe",
+    "i18n-ally.extract.autoDetect": true,
+    "i18n-ally.sourceLanguage": "es",
+    "i18n-ally.localesPaths": [
+      "reactapp/public/locales"
+    ],
+    "i18n-ally.sortKeys": true,
+    "i18n-ally.keepFulfilled": true,
+    "i18n-ally.enabledFrameworks": [
+      "react"
+    ],
+    "i18n-ally.pathMatcher": "{locale}/{namespaces}.json",
+    "i18n-ally.keystyle": "flat",
+    "gitlens.ai.experimental.generateCommitMessage.enabled": false,
+    "csharp.maxProjectFileCountForDiagnosticAnalysis": 250,
+    "dotnet.backgroundAnalysis.compilerDiagnosticsScope": "openFiles",
+    "dotnet.backgroundAnalysis.analyzerDiagnosticsScope": "openFiles",
+    "typescript.tsserver.maxTsServerMemory": 4096,
+    "typescript.tsserver.useSyntaxServer": "never",
+    "workbench.editor.customLabels.patterns": {
+          "**/page.tsx": "page - ${dirname}",
+          "**/layout.tsx": "layout - ${dirname}",
+          "**/api/src/router/*.ts": "api - ${dirname} - ${filename}",
+          "**/db/src/schemas/*.ts": "db - ${dirname} - ${filename}",
+    },
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+      {
+        "text": "Use conventional commit message format."
+      }
+    ]
+  }

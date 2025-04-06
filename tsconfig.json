@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": false,
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"]
+    },
+    "rootDirs": [".", "./.react-router/types"]
+  },
+  "include": [
+    "app",
+    "assets",
+    "components",
+    "config",
+    "hooks",
+    "loader-queries",
+    "states",
+    "types",
+    "utils",
+    "pwa-assets.config.ts",
+    "node_modules/vite-plugin-pwa/client.d.ts",
+    "index.tsx"
+  ],
+  "exclude": ["queries", "requests"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}

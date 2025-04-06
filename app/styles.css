@@ -1,0 +1,69 @@
+#root {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+}
+
+html,
+body {
+  max-width: 100vw;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1d388f61 #e4efef;
+}
+
+*::-webkit-scrollbar {
+  width: 7.5px;
+  height: 7.5px;
+  background-color: #e4efef;
+}
+
+*::-webkit-scrollbar-track {
+  background: #e4efef;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #1d388f61;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #1d388f;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: #1d388f;
+}
+
+*::-webkit-scrollbar-corner {
+  background-color: #e4efef;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 1em;
+  width: 1em;
+  border-radius: 50em;
+  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg)
+    no-repeat 50% 50%;
+  background-size: contain;
+  opacity: 0;
+  pointer-events: none;
+}
+
+input[type="search"]:focus::-webkit-search-cancel-button {
+  opacity: 0.3;
+  pointer-events: all;
+}
+
+.allotmentPane1 {
+  padding-right: 0.5rem;
+}
+
+.allotmentPane2 {
+  padding-left: 0.5rem;
+}
