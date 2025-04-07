@@ -2,14 +2,11 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { captureException } from "@sentry/browser";
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { isRouteErrorResponse, useRouteError } from "react-router";
 import { useNavigate } from "react-router";
 
 export function AppError() {
-  const { t } = useTranslation("error");
   const navigate = useNavigate();
   const error = useRouteError();
   const errorContent = {
@@ -17,33 +14,29 @@ export function AppError() {
     message: "",
   };
   if (import.meta.env.DEV) {
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
     console.log(error);
   }
 
   useEffect(() => {
     if (error instanceof Error) {
-      captureException(error);
       navigate("/", { replace: true });
     }
   }, [error, navigate]);
 
   if (isRouteErrorResponse(error)) {
     if (error.status === 401) {
-      errorContent.heading = t("unauthorizedErrorHeading");
-      errorContent.message = t("unauthorizedErrorMessage");
+      errorContent.heading = "401, Oops! An error has occurred";
+      errorContent.message = "Unauthorized";
     } else if (error.status === 404) {
-      errorContent.heading = t("notFoundErrorHeading");
-      errorContent.message = t("notFoundErrorMessage");
+      errorContent.heading = "404, Oops! An error has occurred";
+      errorContent.message = "Page not found";
     } else {
-      errorContent.heading = t("genericErrorHeading", {
-        what: `${error.status},`,
-      });
+      errorContent.heading = "Oops! An error has occurred";
       errorContent.message = `${error.statusText}`;
     }
   } else if (error instanceof Error) {
-    errorContent.heading = t("genericErrorHeading", { what: `${error.name},` });
-    errorContent.message = t("genericErrorMessage");
+    errorContent.heading = "Oops! An error has occurred";
+    errorContent.message = "Something went wrong";
   }
 
   return (

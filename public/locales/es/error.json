@@ -1,9 +1,0 @@
-{
-  "unauthorizedErrorHeading": "401, Oops! Ha ocurrido un error",
-  "unauthorizedErrorMessage": "No autorizado",
-  "notFoundErrorHeading": "404, Oops! Ha ocurrido un error",
-  "notFoundErrorMessage": "Página no encontrada",
-  "genericErrorHeading": "Oops! Ha ocurrido un error",
-  "genericErrorMessage": "Algo salió mal",
-  "reset": "Haga clic aquí para reiniciar"
-}

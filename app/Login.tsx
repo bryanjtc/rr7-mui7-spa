@@ -1,5 +1,3 @@
-import { FallbackComponent } from "~/components/FallbackComponent";
-import { ErrorBoundary as ErrorBoundaryComponent } from "@sentry/react";
 import { StrictMode } from "react";
 import { AppError } from "./AppError";
 import Typography from "@mui/material/Typography";
@@ -14,8 +12,6 @@ import TextField from "@mui/material/TextField";
 import LoginIcon from "@mui/icons-material/Login";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
-import { nanoid } from "nanoid";
-import { useTranslation } from "react-i18next";
 
 export function ErrorBoundary() {
   return <AppError />;
@@ -23,7 +19,8 @@ export function ErrorBoundary() {
 
 export default function Login() {
   const bgImage = "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2l0eXxlbnwwfHwwfHx8MA%3D%3D";
-  const { t } = useTranslation("login");
+  const currentYear = new Date().getFullYear();
+  const years = `2023 - ${currentYear}`;
 
   return (
     <StrictMode>
@@ -46,12 +43,7 @@ export default function Login() {
           backgroundColor: "white.main",
         }}
       >
-        <ErrorBoundaryComponent
-          beforeCapture={(scope) => {
-            scope.setTag("login", "hero");
-          }}
-          fallback={FallbackComponent}
-        >
+
           <Box
             width="fill-available"
             alignItems="center"
@@ -93,13 +85,6 @@ export default function Login() {
               Company 1
             </Typography>
           </Box>
-        </ErrorBoundaryComponent>
-        <ErrorBoundaryComponent
-          beforeCapture={(scope) => {
-            scope.setTag("login", "form");
-          }}
-          fallback={FallbackComponent}
-        >
           <Box
             my={8}
             mx={4}
@@ -117,10 +102,10 @@ export default function Login() {
               fontWeight="bold"
               align="left"
             >
-              {t("title")}
+              Nice to see you!
             </Typography>
             <Typography component="p" align="left">
-              {t("subtitle")}
+              Select the company and enter your username and password to log in.
             </Typography>
             <Box width="fill-available" my={3}>
               <form>
@@ -128,17 +113,17 @@ export default function Login() {
                   fullWidth={true}
                   required={true}
                 >
-                  <InputLabel htmlFor="company">{t("company")}</InputLabel>
+                  <InputLabel htmlFor="company">Company</InputLabel>
                   <Select
                     notched={true}
                     id="company"
                     name="company"
-                    label={t("company")}
+                    label="Company"
                     value="Company 1"
                     fullWidth={true}
                   >
                     {[{ company: "Company 1" }]?.map((values) => (
-                      <MenuItem value={values.company} key={nanoid()}>
+                      <MenuItem value={values.company} key={values.company}>
                         {values.company}
                       </MenuItem>
                     ))}
@@ -149,7 +134,7 @@ export default function Login() {
                   required={true}
                   fullWidth={true}
                   id="username"
-                  label={t("username")}
+                  label="User"
                   type="text"
                   name="username"
                   autoComplete="email"
@@ -159,7 +144,7 @@ export default function Login() {
                   required={true}
                   fullWidth={true}
                   name="password"
-                  label={t("password")}
+                  label="Password"
                   type="password"
                   id="password"
                   autoComplete="current-password"
@@ -175,13 +160,13 @@ export default function Login() {
                 >
                   <FormControlLabel
                     control={<Checkbox value="remember" color="primary" />}
-                    label={t("rememberPassword")}
+                    label="Remember password"
                   />
                   <Button
                     type="button"
                     variant="text"
                   >
-                    {t("forgotPassword")}
+                    Did you forget your password?
                   </Button>
                 </Box>
                 <Button
@@ -191,7 +176,15 @@ export default function Login() {
                   startIcon={<LoginIcon />}
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  {t("button")}
+                  Log in
+                </Button>
+                <Button
+                  type="button"
+                  fullWidth={true}
+                  variant="outlined"
+                  sx={{ mb: 2 }}
+                >
+                  Log in with Microsoft
                 </Button>
               </form>
               <Box display="flex">
@@ -202,10 +195,10 @@ export default function Login() {
                 />
               </Box>
               <Typography>
-                {t("footer", { years: `2023 - ${new Date().getFullYear()}` })}
+                © {years}. All rights reserved.
               </Typography>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <Typography>{t("footer2")}</Typography>
+                <Typography>Made with ❤️ by Team PayMe.</Typography>
                 <Typography>
                   <Link href="mailto:info@mail.com" color="inherit">
                     info@mail.com
@@ -214,7 +207,6 @@ export default function Login() {
               </Box>
             </Box>
           </Box>
-        </ErrorBoundaryComponent>
       </Box>
     </StrictMode>
   );

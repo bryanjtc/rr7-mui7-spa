@@ -1,34 +1,19 @@
 import type { ReactNode } from "react";
-import CacheBuster from "react-cache-buster";
-import { Loading } from "~/components/Loading";
-import { version } from "../package.json";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { MsalProvider } from "@azure/msal-react";
-import { msalInstance } from "./msalConfig";
-import { queryClient } from "~/utils/query-client";
-
+import { createTheme } from "@mui/material/styles";
+import { theme } from "~/config/theme";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
 
 export const Providers = ({
-  children,
+	children,
 }: {
-  children: ReactNode;
+	children: ReactNode;
 }) => {
-  return (
-    <CacheBuster
-      currentVersion={version}
-      isEnabled={process.env.NODE_ENV === "production"}
-      isVerboseMode={false}
-      loadingComponent={<Loading />}
-      onCacheClear={async (refreshCacheAndReload: () => Promise<void>) => {
-        localStorage.clear();
-        await refreshCacheAndReload();
-      }}
-    >
-      <MsalProvider instance={msalInstance}>
-        <QueryClientProvider client={queryClient}>
-            {children}
-        </QueryClientProvider>
-      </MsalProvider>
-    </CacheBuster>
-  );
+	const themei18n = createTheme(theme);
+	return (
+		<ThemeProvider theme={themei18n}>
+			<CssBaseline />
+			{children}
+		</ThemeProvider>
+	);
 };

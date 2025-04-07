@@ -6,7 +6,6 @@ import "./styles.css";
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import type { ReactNode } from "react";
 import { FallbackRouter } from "~/components/FallbackRouter";
-import { OtherProviders } from "./OtherProviders";
 import { Providers } from "./Providers";
 
 export function Layout({
@@ -55,9 +54,7 @@ export function HydrateFallback() {
 export default function Root() {
   return (
     <Providers>
-      <OtherProviders>
         <Outlet />
-      </OtherProviders>
     </Providers>
   );
 }
