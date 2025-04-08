@@ -1,0 +1,4 @@
+{
+    "name": "rr7-mui7-spa",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node:22"
+  }
